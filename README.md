@@ -5,7 +5,7 @@ The Discrete Moment Map Flow (DMMF) program provides an approximation of the flo
 
 ## Motivation
 
-This program implements a particular evolution equation for quadrangular meshes in the four dimensional Euclidean space, associated to a quadrangulation of the torus. 
+This program implements a particular evolution equation for quadrangular meshes in the four dimensional Euclidean space, associated to a quadrangulation of the torus that came up in our paper Discrete Geometry and Isotropic Surfaces (F. Jauberteau, Y. Rollin, S. Tapie). 
 When running the program, the user may see the flow evolving in real time starting. As it is difficult to visualize a surface in dimension 4, we choose a radial projection on the 3-sphere followed by a stereographic projection onto the 3-dimensional Euclidean space. The faces of the quadrangular mesh come with a color gradient which depend on their symplectic density. In all experiments so far, we observe that the flow is converging toward a Lagrangian quadrangular mesh (with zero symplectic density).
 
 This program provides many examples of discrete immersed surfaces in the four dimensional Euclidean space, at least from an experimental perspective. 
@@ -14,7 +14,7 @@ This program provides many examples of discrete immersed surfaces in the four di
 ## Installation
 
 The program is coded using Processing3. 
-In order to execute the source code, you need Processing3P, which may be downloaded on this page: https://www.processing.org
+In order to execute the source code, you need Processing3, which may be downloaded on this page: https://www.processing.org
 
 The source code (i.e. every *.pde files) must be  placed in a directory named dmmf, located in your Processing sketchbook.
 
