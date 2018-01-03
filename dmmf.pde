@@ -42,20 +42,18 @@ Torus t=new Torus(25);
 Boolean intro_flag=true;
 
 void setup(){
-//size(1280,640,P3D);
- fullScreen(P3D);
+  //size(1280,640,P3D);
+  fullScreen(P3D);
   frameRate(framerate);
-//default text size and color
+  //default text size and color
   textSize(16);
   fill(0); 
- 
  }
 
 
 
 void keyReleased() {
-  switch(key){
-      
+  switch(key){      
     case 'm':
     t.movie_stop();
     break;
@@ -64,80 +62,65 @@ void keyReleased() {
 
 void keyPressed() {
   switch(key){
-      
-    case ' ':
-    t.play_switch();
+    case ' ': t.play_switch();
     break;
   
-    case 'p':
-    saveFrame("torus-######.tiff");
+    case 'p': saveFrame("torus-######.tiff");
     break;
  
-   case 'm':
-   t.movie_rec();
+   case 'm': t.movie_rec();
    break;
     
-    case 'i':
-    t.showinfo_switch();
-    break;
+   case 'i': t.showinfo_switch();
+   break;
   
-    case 'r':
-    t.restart();
-    break;
+   case 'r': t.restart();
+   break;
   
-    case 'f':
-    t.fill_switch();
-    break;
+   case 'f': t.fill_switch();
+   break;
 
-    case 'b':
-    t.balls_switch();
-    break;
+   case 'b': t.balls_switch();
+   break;
 
-    case 'h':
-    t.help_switch();
-    break;
+   case 'h': t.help_switch();
+   break;
 
-    case 't':
-    t.type_prev();
-    break;
+   case 't': t.type_prev();
+   break;
  
-    case 'T':
-    t.type_next();
-    break;
+   case 'T': t.type_next();
+   break;
 
-    case 'n':
-    t.less_noise();
-    break;
+   case 'n': t.less_noise();
+   break;
 
-    case 'N': t.more_noise();
-    break;
+   case 'N': t.more_noise();
+   break;
     
-    case 'q': t.less_quads();
-    break;
+   case 'q': t.less_quads();
+   break;
  
-    case 'Q': t.more_quads();
-    break;
+   case 'Q': t.more_quads();
+   break;
  
-    case 'd': t.decrease_dt();
-    break;
+   case 'd': t.decrease_dt();
+   break;
   
-    case 'D':
-    t.increase_dt();
-    break;
+   case 'D': t.increase_dt();
+   break;
 
-    case 's': t.scale_down();
-    break;
+   case 's': t.scale_down();
+   break;
 
-    case 'S':
-    t.scale_up();
-    break;
+   case 'S': t.scale_up();
+   break;
 
-    case 'c': t.compute_down();
-    break;
+   case 'c': t.compute_down();
+   break;
 
-    case 'C':
-    t.compute_up();
-    break;
+   case 'C': t.compute_up();
+   break;
   }
 }
 
@@ -147,6 +130,7 @@ void draw(){
   newXmag = mouseX/float(width) * TWO_PI;
   newYmag = mouseY/float(height) * TWO_PI;
   float diff = xmag-newXmag;
+
   if (abs(diff) >  0.01)  
     xmag -= diff/4.0; 
   diff = ymag-newYmag;
@@ -165,9 +149,9 @@ void draw(){
   //Draw the opengl picture
   
   t.render();
-  if(intro_flag==true) {
+  if(intro_flag==true) 
     intro(); 
-  }
+  
   
   //Apply discrete evolution of the flow
   t.evolve();

@@ -34,46 +34,46 @@ class Torus {
  double mu_min=0.0;//minimum symplectic density
  double mu_max =0.0; //maximum symplectic density
 
-//most important parameters
-int N =20; //size of the quadrangulation with N^2 quads
-int N_MAX=100; // for safety N must be smaller than N_MAX
+ //most important parameters
+ int N =20; //size of the quadrangulation with N^2 quads
+ int N_MAX=100; // for safety N must be smaller than N_MAX
 
-int Delta_pow = -2;
-double Delta = pow(10.0,Delta_pow); // dt time step for the flow
-float noise = 0.0; // random noise parameter for initial torus
-int torus_type = 0; // Clifford = 0 ; Chekanov = 1, etc..
-int general_scale = 50 ; // overall scaling factor
+ int Delta_pow = -2;
+ double Delta = pow(10.0,Delta_pow); // dt time step for the flow
+ float noise = 0.0; // random noise parameter for initial torus
+ int torus_type = 0; // Clifford = 0 ; Chekanov = 1, etc..
+ int general_scale = 50 ; // overall scaling factor
 
  //Accelaration factor number of streps of 
  //computation the evolution flow
  //before drawing a picture
-int  Boost_comp= 1;
+ int  Boost_comp= 1;
  
-//Overall number of initial tori implemented here 
-int number_torus_types = 8; 
+ //Overall number of initial tori implemented here 
+ int number_torus_types = 8; 
  
  //some colors presets to make nice gradients as a function of 
-//symplectic density
-color isotropic = color(0,0,255);
-color isointerm = color(255,255,0);
-color notiso = color (255,0,0);
-float thr_max=1.0;
-float thr_interm = .5;
-float thr_min=.001;
+ //symplectic density
+ color isotropic = color(0,0,255);
+ color isointerm = color(255,255,0);
+ color notiso = color (255,0,0);
+ float thr_max=1.0;
+ float thr_interm = .5;
+ float thr_min=.001;
 
-//vertices
-int ball_size =10;
-color black=color(0,0,0);
-color far = color(255,0,0);
-color close = color(0,0,255);
-color interm = color(0,255,0);
-float thr_balls_max=4.0;
-float thr_balls_interm = 2.0;
-float thr_balls_min=.1;
+ //vertices
+ int ball_size =10;
+ color black=color(0,0,0);
+ color far = color(255,0,0);
+ color close = color(0,0,255);
+ color interm = color(0,255,0);
+ float thr_balls_max=4.0;
+ float thr_balls_interm = 2.0;
+ float thr_balls_min=.1;
 
 
 
-//some flags for the running status
+ //some flags for the running status
  boolean run = true; //running state (run if true or stop if false)
  boolean showinfo = false; //toggle show information
  boolean restart =true; // if true, generate a new surface
@@ -89,7 +89,7 @@ float thr_balls_min=.1;
  }
  //another constructor 
  Torus(int k){
-  N=k;
+   N=k;
    matrix = new float[4][4]; //rotation matrix to apply to each point   
    resetMatrix();
    resetvertex();
@@ -460,30 +460,28 @@ void  render() {
   
 }
  else {
- graph.beginShape(QUADS);
+   graph.beginShape(QUADS);
    graph.noFill();
    graph.stroke(0);
-for (int n = 0; n<N ; n++) {
-  for (int m = 0 ; m<N ; m++) {
-    int n_next,m_next;
-    if (n==(N-1)) 
-      n_next = 0;
-    else 
-      n_next = n+1;
-    if (m==(N-1)) 
-      m_next = 0;
-    else 
-      m_next = m+1;
+   for (int n = 0; n<N ; n++) {
+     for (int m = 0 ; m<N ; m++) {
+      int n_next,m_next;
+      if (n==(N-1)) 
+       n_next = 0;
+      else 
+       n_next = n+1;
+      if (m==(N-1)) 
+        m_next = 0;
+      else 
+        m_next = m+1;
  
- graph.vertex(t.vertex3d[n][m].x, t.vertex3d[n][m].y, t.vertex3d[n][m].z);
- graph.vertex(t.vertex3d[n_next][m].x, t.vertex3d[n_next][m].y, t.vertex3d[n_next][m].z);
- graph.vertex(t.vertex3d[n_next][m_next].x, t.vertex3d[n_next][m_next].y, t.vertex3d[n_next][m_next].z);
- graph.vertex(t.vertex3d[n][m_next].x, t.vertex3d[n][m_next].y, t.vertex3d[n][m_next].z);
-  }
- }
- 
- graph.endShape();
-  
+       graph.vertex(t.vertex3d[n][m].x, t.vertex3d[n][m].y, t.vertex3d[n][m].z);
+       graph.vertex(t.vertex3d[n_next][m].x, t.vertex3d[n_next][m].y, t.vertex3d[n_next][m].z);
+       graph.vertex(t.vertex3d[n_next][m_next].x, t.vertex3d[n_next][m_next].y, t.vertex3d[n_next][m_next].z);
+       graph.vertex(t.vertex3d[n][m_next].x, t.vertex3d[n][m_next].y, t.vertex3d[n][m_next].z);
+      }
+   }
+   graph.endShape();
  }
    
   
