@@ -50,7 +50,7 @@ class Torus {
  int  Boost_comp= 1;
  
  //Overall number of initial tori implemented here 
- int number_torus_types = 8; 
+ int number_torus_types = 9; 
  
  //some colors presets to make nice gradients as a function of 
  //symplectic density
@@ -182,6 +182,26 @@ void create_knot_Torus(int p, int q,float r)
        }
     }
   }
+ 
+ //This knotted torus is a spin knot on q (p,q)-torus knot
+ //This is one of the luttinger examples which does not
+ //admit a lagrangian type
+ void create_spin_knot_Torus(int p, int q,float r)
+  { 
+    float x,y,z;
+    for (int n=0; n<N; n++){
+     for (int m=0; m<N; m++){
+       x= cos(2*m*p*PI/N) * (cos(2*m*q*PI/N)+ 2) ;
+       y= sin(2*m*p*PI/N) * (cos(2*m*q*PI/N)+ 2 ) ;
+       z= -sin(2*m*PI/N*q) ;
+       vertex[n][m].s= cos(2*n*PI/N)+ (random(noise)-noise/2)/N;
+       vertex[n][m].t= sin(2*n*PI/N)* (x+5) + (random(noise)-noise/2)/N;
+       vertex[n][m].u=  y + (random(noise)-noise/2)/N;
+       vertex[n][m].v= z +  (random(noise)-noise/2)/N;
+       }
+    }
+  }
+ 
  
  //this function creates a flat torus contained in a complex line
 void create_complex_Torus(){ //noise is the level of noise of the standard clifford torus
@@ -384,7 +404,11 @@ void evolve(){
       
     case 7: create_knot_Torus(5,7,.3);
     break;
-     }
+ 
+    case 8: create_spin_knot_Torus(2,3,2.0);
+    break;
+ 
+   }
    computephi();
    timer=0;
   }
@@ -534,41 +558,45 @@ void  render() {
   }
   else if(t.showinfo){
     fill(0);
-   text("Frame rate: " + int(frameRate), 10, 20);
-   text("Timer : " + timer, 10, 40);
+   text("Frame rate: " + int(frameRate), 10, 120);
+   text("Time : " + timer, 10, 40);
    text("Time step : " + Delta/(N*N*N*N), 10, 60);
    text("Number of quads : " + int(N*N), 10, 80);
    text("Noise level : " + noise, 10, 100);
    switch(torus_type){
     case 0:
-      text("Clifford torus", 10, 120);
+      text("Clifford torus", 10, 20);
       break;
     case 1:
-      text("Checkanov torus", 10, 120);
+      text("Chekanov torus", 10, 20);
       break;
     case 2:
-      text("Complex torus type A", 10, 120);
+      text("Complex torus type A", 10, 20);
       break;
    case 3:
-      text("Complex torus type B", 10, 120);
+      text("Complex torus type B", 10, 20);
       break;
    case 4:
-      text("(2,3)-torus knot", 10, 120);
+      text("(2,3)-torus knot", 10, 20);
       break;
    case 5:
-      text("(2,5)-torus knot", 10, 120);
+      text("(2,5)-torus knot", 10, 20);
       break;
    case 6:
-      text("(3,5)-torus knot", 10, 120);
+      text("(3,5)-torus knot", 10, 20);
       break;
    case 7:
-      text("(5,7)-torus knot", 10, 120);
+      text("(5,7)-torus knot", 10, 20);
       break;
-     }
-  text("Overall scale : " + general_scale, 10, 140);
-  text("Minimum symp. density : " + mu_min, 10, 160);
-  text("Maximum symp. density : " + mu_max, 10, 180);
-  text("Computing factor : " +  Boost_comp, 10, 200);
+   case 8:
+      text("Trefoil spin knot", 10, 20);
+      break;
+
+   }
+  text("Overall scale : " + general_scale, 10, 200);
+  text("Minimal symplectic density: " + mu_min, 10, 160);
+  text("Maximal symplectic density: " + mu_max, 10, 180);
+  text("Flow terations per frame: " +  Boost_comp, 10, 140);
     }
     
  //check if a movie has to be recorded

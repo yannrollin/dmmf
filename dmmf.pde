@@ -65,7 +65,7 @@ void keyPressed() {
     case ' ': t.play_switch();
     break;
   
-    case 'p': saveFrame("torus-######.tiff");
+    case 'p': saveFrame("torus-######.png");
     break;
  
    case 'm': t.movie_rec();
