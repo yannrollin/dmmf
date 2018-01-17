@@ -577,19 +577,19 @@ void  render() {
       text("Complex torus type B", 10, 20);
       break;
    case 4:
-      text("(2,3)-torus knot", 10, 20);
+      text("Tubular trefoil knot", 10, 20);
       break;
    case 5:
-      text("(2,5)-torus knot", 10, 20);
+      text("Tubular (2,5)-knot", 10, 20);
       break;
    case 6:
-      text("(3,5)-torus knot", 10, 20);
+      text("Tubular (3,5)-knot", 10, 20);
       break;
    case 7:
-      text("(5,7)-torus knot", 10, 20);
+      text("Tubular (5,7)-knot", 10, 20);
       break;
    case 8:
-      text("Trefoil spin knot", 10, 20);
+      text("Spin torus on a trefoil knot", 10, 20);
       break;
 
    }
