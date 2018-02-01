@@ -18,7 +18,16 @@ The program is coded using the Processing language. In order to execute the sour
 
 **The source code (i.e. every \*.pde files) must be  placed in a directory named dmmf**, located in your Processing sketchbook.
 
-Once this is done, launch the Processing IDLE, and go to the menu File->Sketchbook to open the dmmf sketch. Then run the program by pressing the "play" button of the processing IDLE.
+* The source code may be downloaded from github as a zip file at https://github.com/yannrollin/dmmf
+* It is also possible to download the file using the git command line. The idea is to clone the repository:
+  * Open a terminal
+  * Change the current directory to your sketckbook location. This may change from one system to another. For instance if your directory is ~/Processing type `cd ~/Processing`
+  * Clone the repository using the command `git clone https://github.com/yannrollin/dmmf.git`
+  * This should create a dmmf directroy in your sketchbook. You can now open the dmmf scketch in the processing IDE and run the program.
+  * You may keep the dmmf program up to date. For this, just go to the sketchbook directory `cd ~/Processing/dmmf/` and  run the command  `git pull`
+* Once this is done, launch the Processing IDE, and go to the menu File->Sketchbook to open the dmmf sketch. Then run the program by pressing the "play" button of the processing IDE.
+
+
 
 
 ## Contributors
